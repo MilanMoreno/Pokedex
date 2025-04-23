@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Pokedex</title>
+    <link rel="shortcut icon" href="./logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="fonts/fonts.css">
+</head>
+
+<body>
+    <header>
+        <img src="./logo.png" alt="Pokedex Logo">
+        <h1>My Pokedex </h1>
+        <div class="search-container">
+            <input type="text" id="search-bar" placeholder="Search...">
+        </div>
+    </header>
+
+    <div id="pokemon-container">
+        <div class="pokemon-card" style="background-color: rgb(120, 200, 80);">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" alt="bulbasaur">
+            <div class="card-content">
+                <h3>Bulbasaur</h3>
+                <span class="type-badge grass">grass</span><span class="type-badge poison">poison</span>
+            </div>
+        </div>
+        <div class="pokemon-card" style="background-color: rgb(240, 128, 48);">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png" alt="charmander">
+            <div class="card-content">
+                <h3>Charmander</h3>
+                <span class="type-badge fire">fire</span>
+            </div>
+        </div>
+        <div class="pokemon-card" style="background-color: rgb(104, 144, 240);">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png" alt="squirtle">
+            <div class="card-content">
+                <h3>Squirtle</h3>
+                <span class="type-badge water">water</span>
+            </div>
+        </div>
+
+        <div class="pokemon-card" style="background-color: rgb(248, 207, 48);">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png" alt="pikachu">
+            <div class="card-content">
+                <h3>Pikachu</h3>
+                <span class="type-badge electric">electric</span>
+            </div>
+        </div>
+    </div>
+    <button id="load-more">Load More</button>
+
+    <div class="modal" id="pokemon-modal">
+        <div class="modal-overlay" onclick="closeModal()"></div>
+        <div class="modal-content">
+            <div class="arrow-container arrow-left" onclick="navigatePokemon(-1)">◀</div>
+            <div id="pokemon-details">
+                <div class="modal-header">
+                    <h2 id="pokemon-name">Squirtle</h2>
+                    <img id="pokemon-image" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png" alt="pokemon" style="width: 150px; height: 150px;">
+                </div>
+                <div class="modal-body">
+                    <div class="stat-bars-container">
+                        <div class="stat-bar">
+                            <span class="label">Hp:</span>
+                            <div class="bar">
+                                <div id="hp-bar" style="width: 44%;"></div>
+                            </div>
+                        </div>
+                        <div class="stat-bar">
+                            <span class="label">Attack:</span>
+                            <div class="bar">
+                                <div id="attack-bar" style="width: 48%;"></div>
+                            </div>
+                        </div>
+                        <div class="stat-bar">
+                            <span class="label">Defense:</span>
+                            <div class="bar">
+                                <div id="defense-bar" style="width: 65%;"></div>
+                            </div>
+                        </div>
+                        <div class="stat-bar">
+                            <span class="label">Special attack:</span>
+                            <div class="bar">
+                                <div id="special-attack-bar" style="width: 50%;"></div>
+                            </div>
+                        </div>
+                        <div class="stat-bar">
+                            <span class="label">Special defense:</span>
+                            <div class="bar">
+                                <div id="special-defense-bar" style="width: 64%;"></div>
+                            </div>
+                        </div>
+                        <div class="stat-bar">
+                            <span class="label">Speed:</span>
+                            <div class="bar">
+                                <div id="speed-bar" style="width: 43%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button-group" id="button-group">
+                        <button onclick="showInfo('X')"> Pokedex Data</button>
+                        <button onclick="showInfo('Y')"> Training</button>
+                        <button onclick="showInfo('Z')"> Breeding</button>
+                     
+                    </div>
+                </div>
+            </div>
+            <div class="arrow-container arrow-right" onclick="navigatePokemon(1)">▶</div>
+        </div>
+    </div>
+    <div class="info-modal" id="info-modal" style="display: none;">
+        <div class="info-modal-content">
+            <button class="close" onclick="closeInfoModal()">x</button>
+            <div id="info-content">
+                <p>Charmander entwickelt sich zu Charmeleon.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="loading-spinner" class="spinner" style="display: none;">
+        <div class="loader"></div>
+        <p>weitere Pokemons werden geladen</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
